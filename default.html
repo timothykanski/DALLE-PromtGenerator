@@ -71,39 +71,41 @@
       //console.log(param);
       switch (param) {
         case "#content#":
-          return ["#food#", "#humanoid# #human-mod#", "#humanoid# #human-mod# in #setting#", "#humanoid# holding a #holdable#", "#holdable# in #setting#"];
+          return ["#humanoid# #human-mod# in #setting#", "#holdable# #obj-mod# in #setting#"];
         case "#img-type#":
-          return ["Selfie", "Digital Art", "Renaissance painting", "Painting by #painter#", "Cover of #magazine#", "On the television show #show#", "In the movie #movie#"];
+          return ["Selfie", "Digital Art", "Renaissance painting", "Painting by #painter#", "Cover of #magazine# magazine", "On the television show #show#", "In the movie #movie#"];
         case "#img-mod#":
           return ["Hyperrealistic", "Closeup", "Award winning", "Vintage", "4K HD", "Highly Detailed"];
         case "#food#":
           return ["a bowl of cereal", "hot wings", "a banana"];
         case "#color#":
-          return ["red"];
+          return ["red", "orange", "yellow", "green", "blue", "purple", "silver", "black", "brown", "white", "grey", "gold", "teal", "magenta", "indigo"];
         case "#setting#":
-          return ["a desert"];
+          return ["a desert", "a forest", "a beach scene", "the pouring rain", "a space station on Mars"];
         case "#humanoid#":
-          return ["a robot"];
+          return ["a robot", "a gorilla", "#profession#"];
         case "#human-mod#":
           return ["with #color# hair","dressed as #profession#","holding #holdable#","driving #driveable#","eating #food#","riding #rideable#"];
         case "#critter#":
-          return ["a mouse"];
+          return ["a mouse", "a bird", "a squirrel"];
         case "#driveable#":
-          return ["a school bus"];
+          return ["a school bus", "a car", "a truck", "a motorcycle", "a lawnmower", "a garbage truck", "a snowmobile"];
         case "#rideable#":
           return ["a bicycle", "a horse", "#humanoid#", "#critter#"];
         case "#profession#":
-          return ["a doctor"];
+          return ["a doctor", "a scientist", "the pope", "an astronaut", "a medieval knight", "a lawyer"];
         case "#painter#":
-          return ["Vincent van Gogh"];
+          return ["Vincent van Gogh", "Salvador Dali", "Pablo Picasso", "Claud Monet"];
         case "#magazine#":
-          return ["National Geographic"];
+          return ["National Geographic", "GQ", "Vogue", "Time"];
         case "#show#":
-          return ["Sesame Street"];
+          return ["Sesame Street", "Southpark", "Seinfeld", "The Office", "The 6 o'clock news", "The X-Files"];
         case "#movie#":
-          return ["The Wizard of Oz"];
+          return ["The Wizard of Oz", "Star Wars", "Indiana Jones", "The Lord of the Rings"];
         case "#holdable#":
-          return ["a flower"];
+          return ["a flower", "#food#", "a fork", "a knife", "a pencil", "a boombox", "a wedding ring"];
+        case "#obj-mod#":
+          return ["covered in dust", "sitting on top of #holdable#", "melting", "standing upright", "giving off light"];
       }
     }
 

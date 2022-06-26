@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<link href="https://fonts.googleapis.com/css?family=Cardo:400,700|Oswald" rel="stylesheet">
+<style>
+  body {
+    font-size: 20px;
+    font-family: 'Cardo', serif;
+    background-color: #484d5c;
+    color: rgb(255 206 0);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+  }
+
+</style>
+<html>
+<body>
+
+  <div>
+    <button id="go-button">Go!</button>
+
+    <p id="demo-0"></p>
+    <p id="demo-1"></p>
+    <p id="demo-2"></p>
+    <p id="demo-3"></p>
+    <p id="demo-4"></p>
+    <p id="demo-5"></p>
+    <p id="demo-6"></p>
+    <p id="demo-7"></p>
+    <p id="demo-8"></p>
+    <p id="demo-9"></p>
+  </div>
+
+  <script>
+
+    document.getElementById("go-button").onclick = function () {
+      go();
+    };
+
+    // This gets called once per generation.
+    function go() {
+      let template = "#content#, #img-type#, #img-mod#";
+      for (var i = 0; i < 10; i++) {
+        setContent("demo-" + i, capitalizeFirstLetter(resolve(template)));
+      }
+    }
+    // This gets called once for each prompt generated.
+    function resolve(template) {
+      var ret = template;
+      var arr = template.match(/(#[a-z\-]*#)/gi);// arr is an array of all params in the template.
+      for (var item in arr) {
+        var options = getArrayByParam(arr[item]);
+        var input = resolve(getRandoFromArray(options)); // Recursive call to resolve embedded templates.
+        // replace the param in the template.
+        ret = ret.replace(arr[item], input);
+      }
+      return ret;
+    }
+    function setContent(container, result) {
+      document.getElementById(container).innerHTML = result;
+    }
+    function getRandoFromArray(arr) {
+      var item = arr[Math.floor(Math.random() * arr.length)];
+      return item;
+    }
+    function capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+    function getArrayByParam(param) {
+      //console.log(param);
+      switch (param) {
+        case "#content#":
+          return ["#food#", "a dog", "Bob the builder"];
+        case "#img-type#":
+          return ["Selfie", "Digital Art", "Renaissance painting"];
+        case "#img-mod#":
+          return ["Hyperrealistic", "Closeup", "Award winning"];
+        case "#food#":
+          return ["a bowl of cereal", "hot wings", "a banana"];
+      }
+    }
+
+  </script>
+
+</body>
+</html>
